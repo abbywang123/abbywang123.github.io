@@ -1,0 +1,169 @@
+<center>
+    <br>
+    <button class="button-30" onClick="show()">選擇你的今日午餐</button>
+    
+    <br><br>
+    <!-- 修正圖片檔案名稱及加上 id 屬性 -->
+    <img id="image" src="img/ok.jpg" height="300">
+    
+    <br>
+    <div id="text"></div>
+</center>
+
+<!–--------- JS TODO: 請修改為更改背景顏色 –--------->
+<script>
+    let msg = ["干貝義大利麵", "水餃", "泡菜炒飯", "泡麵", "紅醬義大利麵","黃金煎餃","打拋諸","滑蛋燴飯","青醬"];
+    let color1 = ["#D3A625", "#5D5D5D", "#FFD800", "#946B2D", "#7B7B7B","#D3A625","#5D5D5D","#FFD800","#94682D"];
+    let color2 = ["#740001", "#1A472A", "#000000", "#0E1A40", "#272727","#740001","#000000","#1A472A","#0E1A40"];
+    let i, p, cnt = 1;
+
+    let preload = new Array(msg.length);    // 預載圖片以加快速度
+    for(i = 0; i < msg.length; ++i)
+    {
+        preload[i] = new Image();
+        preload[i].src = "img/" + msg[i] + ".jpg";
+    }
+    
+    function show()
+    {
+        p = Math.random();  // Math.random(): 產生一個介於 0(含) ~ 1(不含) 的小數
+        if(p < 0.05)        // 5% 進入隱藏學院(i = 4)
+        {
+            i = 4;                                
+            document.getElementById("text").style.color = "#AE0000";
+        }
+        else                // 95% 隨機選擇(i = 0 ~ 3)
+        {
+            i = Math.floor(Math.random()*7);
+            document.getElementById("text").style.color = "#000000";
+        }
+        document.getElementById("image").src = "img/" + msg[i] + ".jpg";
+        document.getElementById("text").innerHTML = msg[i] + " " + cnt;
+        document.body.style.backgroundImage = "linear-gradient(to top, "+color1[i]+", "+color2[i]+")";
+
+                    ++cnt;
+                }
+            </script>
+
+            <!–--------- CSS TODO: 請套用一種想要的按鈕(button)樣式 –--------->
+            <style>
+            @font-face {
+                font-family: "MagicSchool";
+                src: url("/font/MagicSchool.ttf");
+            }
+
+            body {
+                font-family: MagicSchool;
+                font-size: 5vw;
+            }
+
+            .button-30 {
+              align-items: center;
+              appearance: none;
+              background-color: #FCFCFD;
+              border-radius: 4px;
+              border-width: 0;
+              box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+              box-sizing: border-box;
+              color: #36395A;
+              cursor: pointer;
+              display: inline-flex;
+              font-family: "JetBrains Mono",monospace;
+              height: 48px;
+              justify-content: center;
+              line-height: 1;
+              list-style: none;
+              overflow: hidden;
+              padding-left: 16px;
+              padding-right: 16px;
+              position: relative;
+              text-align: left;
+              text-decoration: none;
+              transition: box-shadow .15s,transform .15s;
+              user-select: none;
+              -webkit-user-select: none;
+              touch-action: manipulation;
+              white-space: nowrap;
+              will-change: box-shadow,transform;
+              font-size: 18px;
+            }
+
+            .button-30:focus {
+              box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+            }
+
+            .button-30:hover {
+              box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+              transform: translateY(-2px);
+            }
+
+            .button-30:active {
+              box-shadow: #D6D6E7 0 3px 7px inset;
+              transform: translateY(2px);
+            }
+
+                <!-- HTML !-->
+                <button class="button-80" role="button">Button 80</button>
+
+                /* CSS */
+                .button-80 {
+                  background: #fff;
+                  backface-visibility: hidden;
+                  border-radius: .375rem;
+                  border-style: solid;
+                  border-width: .125rem;
+                  box-sizing: border-box;
+                  color: #212121;
+                  cursor: pointer;
+                  display: inline-block;
+                  font-family: Circular,Helvetica,sans-serif;
+                  font-size: 1.125rem;
+                  font-weight: 700;
+                  letter-spacing: -.01em;
+                  line-height: 1.3;
+                  padding: .875rem 1.125rem;
+                  position: relative;
+                  text-align: left;
+                  text-decoration: none;
+                  transform: translateZ(0) scale(1);
+                  transition: transform .2s;
+                  user-select: none;
+                  -webkit-user-select: none;
+                  touch-action: manipulation;
+                }
+
+                .button-80:not(:disabled):hover {
+                  transform: scale(1.05);
+                }
+
+                .button-80:not(:disabled):hover:active {
+                  transform: scale(1.05) translateY(.125rem);
+                }
+
+                .button-80:focus {
+                  outline: 0 solid transparent;
+                }
+
+                .button-80:focus:before {
+                  content: "";
+                  left: calc(-1*.375rem);
+                  pointer-events: none;
+                  position: absolute;
+                  top: calc(-1*.375rem);
+                  transition: border-radius;
+                  user-select: none;
+                }
+
+                .button-80:focus:not(:focus-visible) {
+                  outline: 0 solid transparent;
+                }
+
+                .button-80:focus:not(:focus-visible):before {
+                  border-width: 0;
+                }
+
+                .button-80:not(:disabled):active {
+                  transform: translateY(.125rem);
+                }
+            </style>
+       
